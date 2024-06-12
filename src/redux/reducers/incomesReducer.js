@@ -29,6 +29,8 @@ const incomesReducer = (state = initialState, action) => {
         //change this TODO
         ...state,
         filteredIncomes: state.allIncomes.filter((income) => income.category === action.payload),
+
+        //Date.now().toString(36) + Math.random().toString(36).substring(2, 12).padStart(12, 0)
       };
     default:
       return state;

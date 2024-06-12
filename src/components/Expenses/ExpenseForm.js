@@ -1,7 +1,7 @@
 import React,{ useState } from 'react';
 import ExpenseList from './ExpenseList';
 import { useSelector, useDispatch } from 'react-redux';
-import { addExpense, editExpense, deleteExpense, filterExpenses } from '../../redux/actions/expensesActions';
+import { addExpense, editExpense, deleteExpense, createIdForExpense } from '../../redux/actions/expensesActions';
 
 
 
@@ -20,8 +20,6 @@ const Expenses = () => {
   const dispatch = useDispatch();
 
   const allExpenses = useSelector(state => state.expenses.allExpenses);
-  const filteredExpenses = useSelector(state => state.expenses.filteredExpenses);
-
 
   let categories = [...new Set(allExpenses.map((expense) => expense.category))]
 
@@ -173,15 +171,15 @@ function formatDate() {
       <h4>Filter Here</h4>
     
 
-      <form >
+      {/*<form >
         <select onChange={(event) => (dispatch(filterExpenses(event.target.value)))} name="Category" id="category">
           <option value=" "> See All </option>
           {categories.map((category) => <option key={category}  value={category}> {category}</option>)}
         </select>
         
-      </form>
+      </form>*/}
 
-            <ExpenseList expenses={filteredExpenses.length > 0 ? filteredExpenses : allExpenses}/>
+            {/*<ExpenseList expenses={filteredExpenses.length > 0 ? filteredExpenses : allExpenses}/>*/}
 
 
       <br/>

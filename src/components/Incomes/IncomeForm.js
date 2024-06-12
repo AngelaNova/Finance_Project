@@ -1,7 +1,7 @@
 import React,{ useState } from 'react';
 import IncomeList from './IncomeList';
 import { useSelector, useDispatch } from 'react-redux';
-import { addIncome, editIncome, deleteIncome, filterIncomes } from '../../redux/actions/incomesActions';
+import { addIncome, editIncome, deleteIncome, createIdForIncome } from '../../redux/actions/incomesActions';
 
 
 const Incomes = () => {
@@ -172,15 +172,15 @@ function formatDate() {
       <h4>Filter Here</h4>
     
 
-      <form >
+      {/*<form >
         <select onChange={(event) => (dispatch(filterIncomes(event.target.value)))} name="Category" id="category">
           <option value=" "> See All </option>
           {categories.map((category) => <option key={category}  value={category}> {category}</option>)}
         </select>
         
-      </form>
+      </form>*/}
 
-            <IncomeList incomes={filteredIncomes.length > 0 ? filteredIncomes : allIncomes}/>
+            {/*IncomeList incomes={filteredIncomes.length > 0 ? filteredIncomes : allIncomes}/>*/}
 
 
       <br/>
