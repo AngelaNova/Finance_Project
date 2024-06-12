@@ -1,7 +1,7 @@
 import React,{ useState } from 'react';
 import IncomeList from './IncomeList';
 import { useSelector, useDispatch } from 'react-redux';
-import { addIncome, editIncome, deleteIncome, createIdForIncome } from '../../redux/actions/incomesActions';
+import { addIncome, editIncome, deleteIncome, createForIncome } from '../../redux/actions/incomesActions';
 
 
 const Incomes = () => {

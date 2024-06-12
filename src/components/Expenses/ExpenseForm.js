@@ -1,7 +1,7 @@
 import React,{ useState } from 'react';
 import ExpenseList from './ExpenseList';
 import { useSelector, useDispatch } from 'react-redux';
-import { addExpense, editExpense, deleteExpense, createIdForExpense } from '../../redux/actions/expensesActions';
+import { createExpense, editExpense, deleteExpense} from '../../redux/actions/expensesActions';
 
 
 
@@ -59,7 +59,7 @@ function formatDate() {
 
     console.log(newExpense);
     // Dispatching the addExpense action
-    dispatch(addExpense(newExpense));
+    //dispatch(addExpense(newExpense));
 
     // Clear the form after submission
     setAmount('');

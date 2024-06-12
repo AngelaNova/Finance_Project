@@ -1,12 +1,11 @@
-export const ADD_EXPENSE = 'ADD_EXPENSE';
+export const CREATE_EXPENSE = 'CREATE_EXPENSE';
 export const EDIT_EXPENSE = 'EDIT_EXPENSE';
 export const DELETE_EXPENSE = 'DELETE_EXPENSE';
-export const CREATE_ID_FOR_EXPENSE = 'CREATE_ID_FOR_EXPENSE';
 
-export const addExpense = (expense) => ({
-  type: ADD_EXPENSE,
-  payload: expense,
-});
+export const createExpense = (amount, name, date, category, description) =>({
+  type: CREATE_EXPENSE,
+  payload: {amount, name, date, category, description},
+})
 
 export const editExpense = (id, updatedExpense) => ({
   type: EDIT_EXPENSE,
@@ -18,7 +17,4 @@ export const deleteExpense = (id) => ({
   payload: id,
 });
 
-export const createIdForExpense = (expense) =>({
-  type: CREATE_ID_FOR_EXPENSE,
-  payload: expense,
-})
+
