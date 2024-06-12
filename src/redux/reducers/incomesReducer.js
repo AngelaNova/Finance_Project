@@ -1,8 +1,7 @@
-import { ADD_INCOME, EDIT_INCOME, DELETE_INCOME, FILTER_INCOMES } from '../actions/incomesActions';
+import { ADD_INCOME, EDIT_INCOME, DELETE_INCOME, CREATE_ID_FOR_INCOME } from '../actions/incomesActions';
 
 const initialState = {
   allIncomes: [{"id": 0, "amount": 5, "date": "2024-05-27", "category":"food","description":"coffee"},{"id": 1, "amount": 4, "date": "2024-05-29", "category":"food","description":"donut"}],
-  filteredIncomes: [],
 };
 
 const incomesReducer = (state = initialState, action) => {
@@ -25,8 +24,9 @@ const incomesReducer = (state = initialState, action) => {
         ...state,
         allIncomes: state.allIncomes.filter((income) => income.id !== action.payload),
       };
-    case FILTER_INCOMES:
+    case CREATE_ID_FOR_INCOME:
       return {
+        //change this TODO
         ...state,
         filteredIncomes: state.allIncomes.filter((income) => income.category === action.payload),
       };

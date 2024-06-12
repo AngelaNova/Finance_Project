@@ -1,7 +1,7 @@
 export const ADD_EXPENSE = 'ADD_EXPENSE';
 export const EDIT_EXPENSE = 'EDIT_EXPENSE';
 export const DELETE_EXPENSE = 'DELETE_EXPENSE';
-export const FILTER_EXPENSES = 'FILTER_EXPENSES';
+export const CREATE_ID_FOR_EXPENSE = 'CREATE_ID_FOR_EXPENSE';
 
 export const addExpense = (expense) => ({
   type: ADD_EXPENSE,
@@ -18,7 +18,7 @@ export const deleteExpense = (id) => ({
   payload: id,
 });
 
-export const filterExpenses = (category) => ({
-  type: FILTER_EXPENSES,
-  payload: category,
-});
+export const createIdForExpense = (expense) =>({
+  type: CREATE_ID_FOR_EXPENSE,
+  payload: expense,
+})

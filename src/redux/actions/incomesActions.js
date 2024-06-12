@@ -1,7 +1,7 @@
 export const ADD_INCOME = 'ADD_INCOME';
 export const EDIT_INCOME = 'EDIT_INCOME';
 export const DELETE_INCOME = 'DELETE_INCOME';
-export const FILTER_INCOMES = 'FILTER_INCOMES';
+export const CREATE_ID_FOR_INCOME = 'CREATE_ID_FOR_INCOME';
 
 export const addIncome = (income) => ({
   type: ADD_INCOME,
@@ -18,7 +18,7 @@ export const deleteIncome = (id) => ({
   payload: id,
 });
 
-export const filterIncomes = (category) => ({
-  type: FILTER_INCOMES,
-  payload: category,
+export const createIdForIncome = (income) => ({
+  type: CREATE_ID_FOR_INCOME,
+  payload: income,
 });

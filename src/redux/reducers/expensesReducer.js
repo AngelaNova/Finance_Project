@@ -1,8 +1,7 @@
-import { ADD_EXPENSE, EDIT_EXPENSE, DELETE_EXPENSE, FILTER_EXPENSES } from '../actions/expensesActions';
+import { ADD_EXPENSE, EDIT_EXPENSE, DELETE_EXPENSE, CREATE_ID_FOR_EXPENSE } from '../actions/expensesActions';
 
 const initialState = {
   allExpenses: [{"id": 0, "amount": 5, "date": "2024-05-27", "category":"food","description":"coffee"},{"id": 1, "amount": 4, "date": "2024-05-29", "category":"food","description":"donut"}],
-  filteredExpenses: [],
 };
 
 const expensesReducer = (state = initialState, action) => {
@@ -25,8 +24,9 @@ const expensesReducer = (state = initialState, action) => {
         ...state,
         allExpenses: state.allExpenses.filter((expense) => expense.id !== action.payload),
       };
-    case FILTER_EXPENSES:
+    case CREATE_ID_FOR_EXPENSE:
       return {
+        //CHANGE THIS TODO
         ...state,
         filteredExpenses: state.allExpenses.filter((expense) => expense.category === action.payload),
       };
