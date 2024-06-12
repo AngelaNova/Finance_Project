@@ -11,7 +11,6 @@ const expensesReducer = (state = initialState, action) => {
       const newExpense = {
         id: uuidv4(), // Generate a new UUID for each expense
         amount: action.payload.amount,
-        name: action.payload.name,
         date: action.payload.date,
         category: action.payload.category,
         description: action.payload.description,
