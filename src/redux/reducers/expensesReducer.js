@@ -15,9 +15,8 @@ const expensesReducer = (state = initialState, action) => {
       console.log(action)
       return {
         ...state,
-        allExpenses: state.allExpenses.map((expense) => {
-          return(expense.id === action.payload.id ? action.payload.updatedExpense : expense)
-        }),
+        allExpenses: state.allExpenses.map((expense) => expense.id === action.payload.id ? action.payload.updatedExpense : expense)
+        ,
       };
     case DELETE_EXPENSE:
       return {
@@ -28,7 +27,9 @@ const expensesReducer = (state = initialState, action) => {
       return {
         //CHANGE THIS TODO
         ...state,
-        filteredExpenses: state.allExpenses.filter((expense) => expense.category === action.payload),
+        allExpenses: state.allExpenses.map((expense) =>
+          expense === action.payload ? { ...expense, id: 50 } : expense
+        ),
       };
     default:
       return state;
