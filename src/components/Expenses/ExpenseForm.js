@@ -6,11 +6,11 @@ import { createExpense, editExpense, deleteExpense} from '../../redux/actions/ex
 
 
 const Expenses = () => {
+  const [newExpense, setNewExpense] = useState({})
   const [amount, setAmount] = useState('');
   const [date, setDate] = useState('');
   const [category, setCategory] = useState('');
   const [description, setDescription] = useState('');
-  const [id,setId] = useState(Number(2));
   const [valueToChange, setValueToChange] = useState('');
   const [editId, setEditId] = useState(0);
   const [editId2, setEditId2] = useState(0);
@@ -48,27 +48,7 @@ function formatDate() {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    // Creating a new expense object
-    const newExpense = {
-      id: Number(id),
-      amount: parseFloat(amount),
-      date,
-      category,
-      description,
-    };
-
-    console.log(newExpense);
-    // Dispatching the addExpense action
-    //dispatch(addExpense(newExpense));
-
-    // Clear the form after submission
-    setAmount('');
-    setDate('');
-    setCategory('');
-    setDescription('');
-
-    //increment id
-    setId((id) => Number(id) + 1)
+    
   };
   
   const handleAmount = () => {
