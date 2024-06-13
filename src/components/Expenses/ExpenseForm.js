@@ -73,7 +73,7 @@ const handleSubmit = (event) => {
     handleEditExpense(editId, expense);
   }
 
-
+// need to put handleAmount with handleEditExpense -> just put the dispatch line in handleAmount
   const handleEditExpense = (expenseId, updatedProperties) => {
     console.log({expenseId, updatedProperties});
     dispatch(editExpense(expenseId, updatedProperties)); 
