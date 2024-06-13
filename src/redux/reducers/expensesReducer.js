@@ -1,6 +1,8 @@
 import {  CREATE_EXPENSE, EDIT_EXPENSE, DELETE_EXPENSE } from '../actions/expensesActions';
 import { v4 as uuidv4 } from 'uuid';
 
+export const categories = ["Housing", "Food", "Transportation", "Health", "Debt", "Savings", "Personal Care", "Entertainment", "Education", "Charity", "Miscellaneous"]
+
 const initialState = {
   allExpenses: [{"id": 0, "amount": 5, "date": "2024-05-27", "category":"food","description":"coffee"},{"id": 1, "amount": 4, "date": "2024-05-29", "category":"food","description":"donut"}],
 };
