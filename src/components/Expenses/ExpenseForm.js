@@ -1,17 +1,18 @@
-import React,{ useState } from 'react';
+import React,{ useState, useRef } from 'react';
 import ExpenseList from './ExpenseList';
 import { useSelector, useDispatch } from 'react-redux';
 import { createExpense, editExpense, deleteExpense} from '../../redux/actions/expensesActions';
-import categories from '../../redux/reducers/expensesReducer';
-
 
 
 const ExpenseForm = () => {
-  const [newExpense, setNewExpense] = useState({})
-  const [amount, setAmount] = useState('');
-  const [date, setDate] = useState('');
-  const [category, setCategory] = useState('');
-  const [description, setDescription] = useState('');
+  //useRef for an object: expense
+  const newExpense = useRef({
+    amount: null,
+    date: null,
+    category: null,
+    description: null,
+  });
+
   const [valueToChange, setValueToChange] = useState('');
   const [editId, setEditId] = useState(0);
   const [editId2, setEditId2] = useState(0);
@@ -21,6 +22,13 @@ const ExpenseForm = () => {
   const dispatch = useDispatch();
 
   const allExpenses = useSelector(state => state.expenses.allExpenses);
+  const categories = useSelector(state => state.expenses.categories);
+
+  console.log("1# categories: " ,categories);
+
+
+
+
 
 
 // Function to format Date() to YYYY-MM-DD format
@@ -43,11 +51,21 @@ function formatDate() {
 
 
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
 
-    
+const handleSubmit = (event) => {
+  event.preventDefault();
+  const newExpense = {
+    amount: newExpense.current.amount.value,
+    date: newExpense.current.date.value,
+    category: newExpense.current.category.value,
+    description: newExpense.current.description.value,
   };
+  dispatch(createExpense(newExpense));
+  Object.keys(newExpense.current).forEach(key => {
+    newExpense.current[key].value = '';
+  });
+};
+
   
   const handleAmount = () => {
     setExpenseToEdit((expenseToEdit) => ({...expenseToEdit,amount:valueToChange}));
@@ -77,8 +95,8 @@ function formatDate() {
         <input
           type="number"
           id="amount"
-          value={amount}
-          onChange={(event) => setAmount(event.target.value)}
+          name="amount"
+          ref={newExpense.amount}
           required
         />
         </div>
@@ -87,8 +105,8 @@ function formatDate() {
           <input
           type="date"
           id="date"
-          value={date !== '' ? date : setDate(formatDate())}
-          onChange={(event) => setDate(event.target.value)}
+          name="date"
+          ref={newExpense.date !== '' ? newExpense.date : formatDate()}
           required
           />
         </div>
@@ -97,8 +115,8 @@ function formatDate() {
           <select
           type="text"
           id="category"
-          value={category}
-          onChange={(event) => setCategory(event.target.value)}
+          name="category"
+          ref={newExpense.category}
           required
           >
             <option>Select a category</option>
@@ -110,8 +128,8 @@ function formatDate() {
           <input
           type="text"
           id="description"
-          value={description}
-          onChange={(event) => setDescription(event.target.value)}
+          name="description"
+          ref={newExpense.description}
           required
         />
       </div>
