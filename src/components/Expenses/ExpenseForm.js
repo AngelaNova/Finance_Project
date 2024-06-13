@@ -150,7 +150,7 @@ function formatDate() {
 
       <form >
         <select onChange={(event) => (dispatch(allExpenses(event.target.value)))} name="Category" id="category">
-          <option value=" "> See All </option>
+          <option value=" ">See All</option>
           {categories.map((category) => <option key={category}  value={category}> {category}</option>)}
         </select>
         
