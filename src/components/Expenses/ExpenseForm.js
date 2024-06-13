@@ -1,7 +1,7 @@
 import React,{ useState } from 'react';
 import ExpenseList from './ExpenseList';
 import { useSelector, useDispatch } from 'react-redux';
-import { createExpense, editExpense, deleteExpense} from '../../redux/actions/expensesActions';
+import { createExpense, editExpense, deleteExpense, categories} from '../../redux/actions/expensesActions';
 
 
 
@@ -21,9 +21,6 @@ const Expenses = () => {
 
   const allExpenses = useSelector(state => state.expenses.allExpenses);
 
-  let categories = [...new Set(allExpenses.map((expense) => expense.category))]
-
-  console.log(categories);
 
 // Function to format Date() to YYYY-MM-DD format
 function formatDate() {
@@ -151,13 +148,13 @@ function formatDate() {
       <h4>Filter Here</h4>
     
 
-      {/*<form >
-        <select onChange={(event) => (dispatch(filterExpenses(event.target.value)))} name="Category" id="category">
+      <form >
+        <select onChange={(event) => (dispatch(allExpenses(event.target.value)))} name="Category" id="category">
           <option value=" "> See All </option>
           {categories.map((category) => <option key={category}  value={category}> {category}</option>)}
         </select>
         
-      </form>*/}
+      </form>
 
             {/*<ExpenseList expenses={filteredExpenses.length > 0 ? filteredExpenses : allExpenses}/>*/}
 
