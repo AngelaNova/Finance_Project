@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { addIncome, editIncome, deleteIncome, createForIncome } from '../../redux/actions/incomesActions';
 
 
-const Incomes = () => {
+const IncomeForm = () => {
   const [amount, setAmount] = useState('');
   const [date, setDate] = useState('');
   const [category, setCategory] = useState('');
@@ -192,4 +192,4 @@ function formatDate() {
   )
 }
 
-export default Incomes
+export default IncomeForm;

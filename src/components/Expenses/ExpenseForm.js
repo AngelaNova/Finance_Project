@@ -1,11 +1,12 @@
 import React,{ useState } from 'react';
 import ExpenseList from './ExpenseList';
 import { useSelector, useDispatch } from 'react-redux';
-import { createExpense, editExpense, deleteExpense, categories} from '../../redux/actions/expensesActions';
+import { createExpense, editExpense, deleteExpense} from '../../redux/actions/expensesActions';
+import categories from '../../redux/reducers/expensesReducer';
 
 
 
-const Expenses = () => {
+const ExpenseForm = () => {
   const [newExpense, setNewExpense] = useState({})
   const [amount, setAmount] = useState('');
   const [date, setDate] = useState('');
@@ -93,13 +94,16 @@ function formatDate() {
         </div>
         <div>
           <label htmlFor="category">Category:</label>
-          <input
+          <select
           type="text"
           id="category"
           value={category}
           onChange={(event) => setCategory(event.target.value)}
           required
-          />
+          >
+            <option>Select a category</option>
+            {categories.map(category => <option key={category}>{category}</option>)}
+          </select>
         </div>
         <div>
           <label htmlFor="description">Description:</label>
@@ -149,7 +153,7 @@ function formatDate() {
     
 
       <form >
-        <select onChange={(event) => (dispatch(allExpenses(event.target.value)))} name="Category" id="category">
+        <select onChange={(event) => (true)} name="Category" id="category">
           <option value=" ">See All</option>
           {categories.map((category) => <option key={category}  value={category}> {category}</option>)}
         </select>
@@ -168,4 +172,4 @@ function formatDate() {
   )
 }
 
-export default Expenses
+export default ExpenseForm;
