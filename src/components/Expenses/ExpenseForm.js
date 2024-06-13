@@ -36,19 +36,13 @@ function formatDate() {
   
   const date = new Date();
 
-  // Extract the year, month, and day
   const year = date.getFullYear(); 
-  // Get month (0-indexed, so add 1) and pad with leading zero
   const month = String(date.getMonth() + 1).padStart(2, '0'); 
-  //Get day and pad with leading zero if needed
   const day = String(date.getDate()).padStart(2, '0'); 
 
-  // Return the formatted date in YYYY-MM-DD format
+  
   return `${year}-${month}-${day}`;
 }
-
-
-
 
 
 
