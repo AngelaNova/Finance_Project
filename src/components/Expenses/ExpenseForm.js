@@ -15,7 +15,7 @@ const ExpenseForm = () => {
 
   const [valueToChange, setValueToChange] = useState('');
   const [editId, setEditId] = useState(0);
-  const [editId2, setEditId2] = useState(0);
+  const [deleteId, setdeleteId] = useState(0);
   const [expenseToEdit, setExpenseToEdit] = useState({});
   
   
@@ -157,9 +157,9 @@ const handleSubmit = (event) => {
       <br/>
       <p>To delete an expense</p>
       <p>input the id of the expense to delete it</p>
-      <p>Delete expense with id: {editId2}</p>
-      <input  value={Number(editId2)} required onChange={(event) => setEditId2(Number(event.target.value))} type="number"/>
-      <button onClick={() => (dispatch(deleteExpense(editId2)))}>Submit Edit</button>
+      <p>Delete expense with id: {deleteId}</p>
+      <input  value={Number(deleteId)} required onChange={(event) => setdeleteId(Number(event.target.value))} type="number"/>
+      <button onClick={() => (dispatch(deleteExpense(deleteId)))}>Submit Edit</button>
 
       <h4>Filter Here</h4>
     
