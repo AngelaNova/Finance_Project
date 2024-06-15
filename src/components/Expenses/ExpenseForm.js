@@ -48,6 +48,7 @@ function formatDate() {
 
 const handleSubmit = (event) => {
   event.preventDefault();
+  console.log("newExpense: ",newExpense.current);
   const expense = {
     amount: newExpense.current.amount.value,
     date: newExpense.current.date.value,
@@ -64,14 +65,7 @@ const handleSubmit = (event) => {
   
   const handleAmount = () => {
     setExpenseToEdit((expenseToEdit) => ({...expenseToEdit,amount:valueToChange}));
-    const expense =  {...expenseToEdit,amount:valueToChange}
-    handleEditExpense(editId, expense);
-  }
-
-// need to put handleAmount with handleEditExpense -> just put the dispatch line in handleAmount
-  const handleEditExpense = (expenseId, updatedProperties) => {
-    console.log({expenseId, updatedProperties});
-    dispatch(editExpense(expenseId, updatedProperties)); 
+    dispatch(editExpense(editId, expenseToEdit)); 
   }
 
 
@@ -91,7 +85,7 @@ const handleSubmit = (event) => {
           type="number"
           id="amount"
           name="amount"
-          ref={(input) => newExpense.current.amount = input}
+          ref={(el) => newExpense.current.amount = el}
           required
         />
         </div>
@@ -101,7 +95,8 @@ const handleSubmit = (event) => {
           type="date"
           id="date"
           name="date"
-          ref={newExpense.date !== '' ? newExpense.date : formatDate()  }
+          ref={(el) => newExpense.current.date = el}
+          defaultValue={formatDate()}
           required
           />
         </div>
@@ -111,7 +106,7 @@ const handleSubmit = (event) => {
           type="text"
           id="category"
           name="category"
-          ref={newExpense.category}
+          ref={(el) => newExpense.current.category = el}
           required
           >
             <option>Select a category</option>
@@ -124,7 +119,7 @@ const handleSubmit = (event) => {
           type="text"
           id="description"
           name="description"
-          ref={newExpense.description}
+          ref={(el) => newExpense.description = el}
           required
         />
       </div>
