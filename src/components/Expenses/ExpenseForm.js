@@ -1,5 +1,4 @@
 import React,{ useState, useRef } from 'react';
-import ExpenseList from './ExpenseList';
 import { useSelector, useDispatch } from 'react-redux';
 import { createExpense, editExpense, deleteExpense} from '../../redux/actions/expensesActions';
 import ExpenseFeed from './ExpenseFeed';
