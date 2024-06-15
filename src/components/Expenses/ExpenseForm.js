@@ -131,10 +131,11 @@ const handleSubmit = (event) => {
       <div>
         <h3>Edit Expenses below</h3>
         <p>Input the id of your expense below</p>
-        <input ref={editId} type="text" id="expenseId" required placeholder='expense id'/>
-        <button onClick={() => setExpenseToEdit( allExpenses.find((expense) => expense.id === editId))}>Submit Id</button>
-        <p>this is the id {editId}</p>
+        <input ref={editId} type="text" name="expenseId" id="expenseId" required placeholder='expense id'/>
         
+        <button onClick={() => setExpenseToEdit( allExpenses.find((expense) => expense.id === editId))}>Submit Id</button>
+        <p>this is the id you have chosen: {editId.current.value}</p>
+
         <p>this is the expense {JSON.stringify(expenseToEdit)}</p>
         <br/>
         <p>To change the amount, input the correct amount</p>
