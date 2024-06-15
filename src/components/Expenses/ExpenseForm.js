@@ -2,6 +2,7 @@ import React,{ useState, useRef } from 'react';
 import ExpenseList from './ExpenseList';
 import { useSelector, useDispatch } from 'react-redux';
 import { createExpense, editExpense, deleteExpense} from '../../redux/actions/expensesActions';
+import ExpenseFeed from './ExpenseFeed';
 
 
 const ExpenseForm = () => {
@@ -24,6 +25,8 @@ const ExpenseForm = () => {
   const allExpenses = useSelector(state => state.expenses.allExpenses);
   const categories = useSelector(state => state.expenses.categories);
 
+
+  console.log("allExpenses: ", allExpenses);
   console.log("1# categories: " ,categories);
 
 
@@ -50,9 +53,8 @@ const handleSubmit = (event) => {
   event.preventDefault();
   console.log("newExpense: ",newExpense.current);
  
-  //createExpense = (amount, date, category, description)
+  //createExpense = (amount, date, category, description) - id added in redux store
   dispatch(createExpense(newExpense.current.amount.value,newExpense.current.date.value,newExpense.current.category.value,newExpense.current.description.value));
-  //clean the reference ?? TODO
 
 };
 
@@ -123,7 +125,7 @@ const handleSubmit = (event) => {
 
       
       <div>
-         <ExpenseList expenses={allExpenses}/>
+         <ExpenseFeed expenses={allExpenses}/>
       </div>
 
       <div>
