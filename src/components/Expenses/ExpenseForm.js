@@ -48,13 +48,13 @@ function formatDate() {
 
 const handleSubmit = (event) => {
   event.preventDefault();
-  const expenseToAdd = {
+  const expense = {
     amount: newExpense.current.amount.value,
     date: newExpense.current.date.value,
     category: newExpense.current.category.value,
     description: newExpense.current.description.value,
   };
-  dispatch(createExpense(expenseToAdd));
+  dispatch(createExpense(expense));
   //clean the references
   Object.keys(newExpense.current).forEach(key => {
     newExpense.current[key].value = '';
@@ -91,7 +91,7 @@ const handleSubmit = (event) => {
           type="number"
           id="amount"
           name="amount"
-          ref={newExpense.amount}
+          ref={(input) => newExpense.current.amount = input}
           required
         />
         </div>
@@ -101,7 +101,7 @@ const handleSubmit = (event) => {
           type="date"
           id="date"
           name="date"
-          ref={newExpense.date !== '' ? newExpense.date : formatDate()}
+          ref={newExpense.date !== '' ? newExpense.date : formatDate()  }
           required
           />
         </div>
