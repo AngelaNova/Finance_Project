@@ -24,7 +24,6 @@ const IncomeForm = () => {
 
   let categories = [...new Set(allIncomes.map((income) => income.category))]
 
-  console.log(categories);
 
 // Function to format Date() to YYYY-MM-DD format
 function formatDate() {
@@ -74,14 +73,8 @@ function formatDate() {
   
   const handleAmount = () => {
     setIncomeToEdit((incomeToEdit) => ({...incomeToEdit,amount:valueToChange}));
-    const income =  {...incomeToEdit,amount:valueToChange}
-    handleEditIncome(editId, income);
-  }
-
-
-  const handleEditIncome = (incomeId, updatedProperties) => {
-    console.log({incomeId, updatedProperties});
-    dispatch(editIncome(incomeId, updatedProperties)); 
+    
+    dispatch(editIncome(editId, incomeToEdit));
   }
 
 
