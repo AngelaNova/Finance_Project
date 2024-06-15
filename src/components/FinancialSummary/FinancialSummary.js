@@ -48,9 +48,6 @@ const FinancialSummary = () => {
       return Number(expense.date.slice(0,4)) === Number(year)})
       let total = filterExpenses.reduce((totalAmounts, expense) => { return totalAmounts + expense.amount  }, 0 );
 
-    console.log("filterExpenses", filterExpenses);
-    console.log("year", year);
-
     setTotalForYearExp(total);
     return total;
 
