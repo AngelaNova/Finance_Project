@@ -14,8 +14,9 @@ const ExpenseForm = () => {
     description: null,
   });
 
+  const editId = useRef('');
+
   const [valueToChange, setValueToChange] = useState('');
-  const [editId, setEditId] = useState(0);
   const [deleteId, setdeleteId] = useState(0);
   const [expenseToEdit, setExpenseToEdit] = useState({});
   
@@ -131,7 +132,7 @@ const handleSubmit = (event) => {
       <div>
         <h3>Edit Expenses below</h3>
         <p>Input the id of your expense below</p>
-        <input value={Number(editId)} type="text" id="expenseId" required onChange={(event) => setEditId(Number(event.target.value))} placeholder='expense id'/>
+        <input ref={editId} type="text" id="expenseId" required placeholder='expense id'/>
         <button onClick={() => setExpenseToEdit( allExpenses.find((expense) => expense.id === editId))}>Submit Id</button>
         <p>this is the id {editId}</p>
         
