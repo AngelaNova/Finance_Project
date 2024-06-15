@@ -5,7 +5,7 @@ const IncomeFeed = ({incomes}) => {
   return (
     <div>
       <div class="card">
-          <p class="card-text">  <IncomeList incomes={incomes}/> </p>
+          <div class="card-text">  <IncomeList incomes={incomes}/> </div>
       </div>
     </div>
   )
