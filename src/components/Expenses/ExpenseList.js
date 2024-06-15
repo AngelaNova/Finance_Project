@@ -7,7 +7,7 @@ function ExpenseList({expenses}) {
     <div>
       <h1>Expenses</h1>
       <ul>
-        {expenses.map((expense) => (
+        {expenses & expenses.map((expense) => (
           <li key={expense.id}>{expense.description} : {expense.amount} $ | {expense.date}</li>
         ))}
       </ul>
