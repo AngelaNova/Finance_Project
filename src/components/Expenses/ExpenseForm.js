@@ -67,41 +67,45 @@ const handleSubmit = (event) => {
 
 
   return (
-    <div id="ExpenseManagement">
-    <header >
+    <div id="ExpenseManagement" className="container my-5">
+    <header className="text-center">
       <h3>Welcome to the Expenses Menu</h3>
     </header>
-    <div>
-      <h4>Add an expense below</h4>
+    <div className="row justify-content-center">
+      <div className="col-12 col-md-8 col-lg-6">
+        <h4 className="text-center">Add an expense below</h4>
 
-      <form onSubmit={handleSubmit}> {/*onSubmit -> creates a new object to add to the list of expenses */}
-      <div>
-        <label htmlFor="amount">Amount:</label>
+        <form onSubmit={handleSubmit}> {/*onSubmit -> creates a new object to add to the list of expenses */}
+      <div className="mb-3">
+        <label htmlFor="amount" className="form-label">Amount:</label>
         <input
           type="number"
           id="amount"
           name="amount"
+          className="form-control"
           ref={(el) => newExpense.current.amount = el}
           required
         />
         </div>
         <div>
-          <label htmlFor="date">Date:</label>
+          <label htmlFor="date" className="form-label">Date:</label>
           <input
           type="date"
           id="date"
           name="date"
+          className="form-control"
           ref={(el) => newExpense.current.date = el}
           defaultValue={formatDate()}
           required
           />
         </div>
         <div>
-          <label htmlFor="category">Category:</label>
+          <label htmlFor="category" className="form-label">Category:</label>
           <select
           type="text"
           id="category"
           name="category"
+          className="form-select"
           ref={(el) => newExpense.current.category = el}
           required
           >
@@ -110,55 +114,64 @@ const handleSubmit = (event) => {
           </select>
         </div>
         <div>
-          <label htmlFor="description">Description:</label>
+          <label htmlFor="description" className="form-label">Description:</label>
           <input
           type="text"
           id="description"
           name="description"
+          className="form-control"
           ref={(el) => newExpense.current.description = el}
           required
         />
       </div>
-      <button type="submit">Add Expense</button>
+      <button type="submit" className="btn btn-primary">Add Expense</button>
       </form>
       </div>
-
+    </div>
       
-      <div>
+      <div className="row justify-content-center mt-4">
+        <div className="col-12 col-md-8 col-lg-6">
          <ExpenseFeed expenses={allExpenses}/>
+         </div>
       </div>
 
-      <div>
-        <h3>Edit Expenses below</h3>
-        <p>Input the id of your expense below</p>
-        <input ref={editId} type="text" name="expenseId" id="expenseId" required placeholder='expense id'/>
-        
-        <button onClick={() => setExpenseToEdit( allExpenses.find((expense) => expense.id === editId))}>Submit Id</button>
-        <p>this is the id you have chosen: {editId.current.value}</p>
-
+      <div className="row justify-content-center mt-4">
+        <div className="col-12 col-md-8 col-lg-6">
+        <h3 className="text-center">Edit Expenses below</h3>
+        <p className="text-center">Input the id of your expense below</p>
+        <div className="mb-3">
+        <input className="form-control" ref={editId} type="text" name="expenseId" id="expenseId" required placeholder='expense id'/>
+        </div>
+        <div className="text-center">
+        <button className="btn btn-secondary mb-3" onClick={() => setExpenseToEdit( allExpenses.find((expense) => expense.id === editId))}>Submit Id</button>
+        <p className="text-center">this is the id you have chosen: {editId.current.value}</p>
         <p>this is the expense {JSON.stringify(expenseToEdit)}</p>
-        <br/>
+        </div>
         <p>To change the amount, input the correct amount</p>
+        <div className="mb-3">
         <input value={Number(valueToChange)} type="number" id="expenseTitle" required onChange={(event) => setValueToChange(Number(event.target.value))} placeholder='Amout'/>
-        <button onClick={() => handleAmount()}>Submit Edit</button>
-
+        </div>
+        <div className="text-center">
+        <button className="btn btn-primary mb-3" onClick={() => handleAmount()}>Submit Edit</button>
+        </div>
         {/*<p>To change the description, input the correct description</p>
         <input value={0} type="text" id="expenseTitle" required onChange={(event) => setValueToChange(() => event.target.value)} placeholder='Description'/>
         <button onClick={() => handleEditExpense(editId, expenseToEdit)}>Submit Edit</button>
       */}
 
-      <br/>
-      <p>To delete an expense</p>
-      <p>input the id of the expense to delete it</p>
-      <p>Delete expense with id: {deleteId}</p>
-      <input  value={Number(deleteId)} required onChange={(event) => setdeleteId(Number(event.target.value))} type="number"/>
-      <button onClick={() => (dispatch(deleteExpense(deleteId)))}>Submit Edit</button>
+      <p className="text-center">To delete an expense, input the id of the expense to delete it</p>
+      <p className="text-center">Delete expense with id: {deleteId}</p>
+      <div className=" mb-3">
+      <input  className="form-control"value={Number(deleteId)} required onChange={(event) => setdeleteId(Number(event.target.value))} type="number"/>
+      </div>
+      <div className="text-center">
+      <button className="btn btn-danger" onClick={() => (dispatch(deleteExpense(deleteId)))}>Delete</button>
+      </div>
 
-      <h4>Filter Here</h4>
-    
+      <h4 className="text-center mt-4">Filter Here</h4>
 
-      <form >
-        <select onChange={(event) => (true)} name="Category" id="category">
+      <form className="text-center">
+        <select className="form-select" onChange={(event) => (true)} name="Category" id="category">
           <option value=" ">See All</option>
           {categories.map((category) => <option key={category}  value={category}> {category}</option>)}
         </select>
@@ -170,6 +183,7 @@ const handleSubmit = (event) => {
 
       <br/>
     </div> 
+    </div>
   </div>
   )
 }
