@@ -130,9 +130,7 @@ const handleSubmit = (event) => {
     </div>
       
       <div className="row justify-content-center mt-4">
-        <div className="col-12 col-md-8 col-lg-6">
-         <ExpenseFeed expenses={allExpenses}/>
-         </div>
+        <ExpenseFeed expenses={allExpenses}/>
       </div>
 
       <div className="row justify-content-center mt-4">
