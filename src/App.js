@@ -1,3 +1,4 @@
+import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux';
 import store from './redux/store';
 import ExpenseForm from './components/Expenses/ExpenseForm';
@@ -10,12 +11,14 @@ import Header from './components/Header';
 
 function App() {
   return (
-    <Provider store={store}>
-      <Header/>
-      <ExpenseForm/>
-      <IncomeForm/>
-      <FinancialSummary/>
-    </Provider>
+    <BrowserRouter>
+      <Provider store={store}>
+        <Header/>
+        <ExpenseForm/>
+        <IncomeForm/>
+        <FinancialSummary/>
+      </Provider>
+    </BrowserRouter>
   );
 }
 

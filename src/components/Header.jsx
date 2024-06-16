@@ -1,33 +1,37 @@
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css'; // Ensure you have Bootstrap CSS imported
 
 const Header = () => {
   return (
-    <header className="d-flex justify-content-between align-items-md-center pb-3 mb-5 border-bottom">
-      <h1 className="h4">
-        <Link
-          href="/"
-          className="d-flex align-items-center text-dark text-decoration-none"
+    <nav className="navbar navbar-expand-lg navbar-light bg-light" id="Header">
+      <div className="container-fluid">
+        <Link className="navbar-brand" to="/">Finance App</Link>
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="32"
-            height="32"
-            fill="currentColor"
-            className="bi bi-bootstrap-fill d-inline-block me-2"
-            viewBox="0 0 16 16"
-          >
-            <path d="M6.375 7.125V4.658h1.78c.973 0 1.542.457 1.542 1.237 0 .802-.604 1.23-1.764 1.23zm0 3.762h1.898c1.184 0 1.81-.48 1.81-1.377 0-.885-.65-1.348-1.886-1.348H6.375z" />
-            <path d="M4.002 0a4 4 0 0 0-4 4v8a4 4 0 0 0 4 4h8a4 4 0 0 0 4-4V4a4 4 0 0 0-4-4zm1.06 12V3.545h3.399c1.587 0 2.543.809 2.543 2.11 0 .884-.65 1.675-1.483 1.816v.1c1.143.117 1.904.931 1.904 2.033 0 1.488-1.084 2.396-2.888 2.396z" />
-          </svg>
-          <span>React</span>
-        </Link>
-      </h1>
-      <a
-        href="https://github.com/twbs/examples/tree/main/react-nextjs/"
-      >
-        View on GitHub
-      </a>
-    </header>
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div className="collapse navbar-collapse" id="navbarNav">
+          <ul className="navbar-nav">
+            <li className="nav-item">
+              <Link className="nav-link" to="/expense-management">Expense Management</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/income-management">Income Management</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/financial-summary">Financial Summary</Link>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
   );
 };
 

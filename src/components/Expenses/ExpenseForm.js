@@ -68,7 +68,7 @@ const handleSubmit = (event) => {
 
   return (
     <>
-    <header>
+    <header id="ExpenseManagement" className='centered-div'>
       <h3>Welcome to the Expenses Menu</h3>
     </header>
     <div>
