@@ -1,4 +1,4 @@
-# Expense Management Application
+# Finance Management Application
 
 ## Table of Contents
 
@@ -67,7 +67,7 @@ This is a personal income and expense tracker application built using React and 
 
 1. **Clone the repository:**
 
-git clone https://github.com/yourusername/expense-management-app.git
+git clone https://github.com/AngelaNova/Finance_Project.git
 
 2. **Navigate to the project directory:**
 
