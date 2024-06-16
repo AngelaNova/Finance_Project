@@ -143,7 +143,7 @@ const handleSubmit = (event) => {
         <div className="text-center">
         <button className="btn btn-secondary mb-3" onClick={() => setExpenseToEdit( allExpenses.find((expense) => expense.id === editId.current.value))}>Submit Id</button>
         <p className="text-center">this is the id you have chosen: {expenseToEdit === null ? <p>No expense with such Id found</p> : editId.current.value}</p>
-        <p>this is the expense you have chosen:  {JSON.stringify(expenseToEdit)}</p>
+        <p>this is the expense you have chosen:  <br/> {JSON.stringify(expenseToEdit)}</p>
         </div>
         <p>To change the amount, input the correct amount</p>
         <div className="mb-3">
