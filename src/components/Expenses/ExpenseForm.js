@@ -142,14 +142,14 @@ const handleSubmit = (event) => {
         </div>
         <div className="text-center">
         <button className="btn btn-secondary mb-3" onClick={() => setExpenseToEdit( allExpenses.find((expense) => expense.id === editId.current.value))}>Submit Id</button>
-        <p className="text-center">this is the id you have chosen: {expenseToEdit === null ? <p>No expense with such Id found</p> : editId.current.value}</p>
+        <p className="text-center">this is the id you have chosen: {expenseToEdit && expenseToEdit.length > 1 ? <p>No expense with such Id found</p> : editId.current.value}</p>
 
-        <p>this is the expense you have chosen:  <br/> {JSON.stringify(expenseToEdit)}</p>
+        {expenseToEdit && expenseToEdit.length > 1 ? (<p>this is the expense you have chosen:  <br/> {JSON.stringify(expenseToEdit)}</p>) : <br/>}
         </div>
 
         <p>To change the amount, input the correct amount</p>
         <div className="mb-3">
-        <input value={Number(valueToChange)} type="number" id="expenseTitle" required onChange={(event) => setValueToChange(Number(event.target.value))} placeholder='Amout'/>
+        <input value={Number(valueToChange)} className=" form-control " type="number" id="expenseTitle" required onChange={(event) => setValueToChange(Number(event.target.value))} placeholder='Amout'/>
         </div>
         <div className="text-center">
         <button className="btn btn-primary mb-3" onClick={() => handleAmount()}>Submit Edit</button>
