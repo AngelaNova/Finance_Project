@@ -14,12 +14,11 @@ const ExpenseForm = () => {
   });
 
   const editId = useRef('');
-  const editIdForDescription = useRef('');
   const newAmount = useRef('');
   const newDescription= useRef('');
+  const deleteId = useRef('');
 
 
-  const [deleteId, setdeleteId] = useState(0);
   const [expenseToEdit, setExpenseToEdit] = useState({});
   
   
@@ -62,16 +61,27 @@ const handleSubmit = (event) => {
 };
 
   
-  const handleAmount = () => {
-    setExpenseToEdit((expenseToEdit) => ({...expenseToEdit,amount:Number(newAmount.current.value)}));
-      dispatch(editExpense(editId.current.value, expenseToEdit));
-     
+  const handleEditOfAmount = () => {
+    setExpenseToEdit((expenseToEdit) => ({...expenseToEdit, amount: Number(newAmount.current.value)}));
+
+    // Dispatch the action after updating the state
+    dispatch(editExpense(editId.current.value, {
+      ...expenseToEdit,
+      amount: Number(newAmount.current.value),
+    }));
   }
 
-  const handleDescription = () => {
-    setExpenseToEdit((expenseToEdit) => ({...expenseToEdit,description:newDescription.current.value}));
-    dispatch(editExpense(editIdForDescription.current.value, expenseToEdit)); 
+
+  const handleEditOfDescription = () => {
+    setExpenseToEdit((expenseToEdit) => ({...expenseToEdit, description: newDescription.current.value}));
+
+    // Dispatch the action after updating the state
+    dispatch(editExpense(editId.current.value, {
+      ...expenseToEdit,
+      description: newDescription.current.value,
+    }));
   }
+
 
 
   return (
@@ -160,28 +170,34 @@ const handleSubmit = (event) => {
 
         <p>Change the amount of the expense. Input the correct amount below:</p>
         <div className="mb-3">
-        <input ref={newAmount} className="form-control" type="number" id="newAmount" required placeholder="New Amount"/>
+          <input ref={newAmount} className="form-control" type="number" id="newAmount" required placeholder="New Amount"/>
         </div>
 
         <p>New Amount inputted is : {newAmount.current.value}</p>
         <div className="text-center">
-        <button className="btn btn-primary mb-3" onClick={handleAmount}>Submit Edit</button>
+          <button className="btn btn-primary mb-3" onClick={handleEditOfAmount}>Submit Edit</button>
         </div>
 
-        {/*<p>To change the description, input the correct description</p>
-        <input value={0} type="text" id="expenseTitle" required onChange={(event) => setValueToChange(() => event.target.value)} placeholder='Description'/>
-        <button onClick={() => handleEditExpense(editId, expenseToEdit)}>Submit Edit</button>
-      */}
+        <p>Change the description of the expense. Input the correct description below:</p>
+        <div className="mb-3">
+          <input ref={newDescription} className="form-control" type="text" id="newDescription" required placeholder="New Description"/>
+        </div>
+
+        <p>New Description inputted is : {newDescription.current.value}</p>
+        <div className="text-center">
+          <button className="btn btn-primary mb-3" onClick={handleEditOfDescription}>Submit Edit</button>
+        </div>
+
 
       <p className="text-center">Delete an expense. Input the id of the expense to delete it</p>
-      <p className="text-center">Delete expense with id: {deleteId}</p>
+      <p className="text-center">Delete expense with id: {deleteId.current.value}</p>
       <div className=" mb-3">
-      <input  className="form-control"value={Number(deleteId)} required onChange={(event) => setdeleteId(Number(event.target.value))} type="number"/>
+        <input  className="form-control" ref={deleteId} required type="number"/>
       </div>
       <div className="text-center">
-      <button className="btn btn-danger" onClick={() => (dispatch(deleteExpense(deleteId)))}>Delete</button>
+        <button className="btn btn-danger" onClick={() => alert("Are you sure that you want to delete expense with id of  ", deleteId," ?") (dispatch(deleteExpense(deleteId.current.value)))}>Delete</button>
       </div>
-
+      
       <h4 className="text-center mt-4">Filter Here</h4>
 
       <form className="text-center">
