@@ -28,7 +28,7 @@ const ExpenseForm = () => {
 
   console.log("allExpenses: ", allExpenses);
   console.log("1# categories: " ,categories);
-
+  console.log("editId :" , editId)
 
 
 
@@ -135,16 +135,18 @@ const handleSubmit = (event) => {
 
       <div className="row justify-content-center mt-4">
         <div className="col-12 col-md-8 col-lg-6">
-        <h3 className="text-center">Edit Expenses below</h3>
-        <p className="text-center">Input the id of your expense below</p>
-        <div className="mb-3">
-        <input className="form-control" ref={editId} type="text" name="expenseId" id="expenseId" required placeholder='expense id'/>
-        </div>
+          <h3 className="text-center">Edit Expenses below</h3>
+          <p className="text-center">Input the id of your expense below</p>
+          <div className="mb-3">
+            <input className="form-control" ref={editId} type="text" name="expenseId" id="expenseId" required placeholder='Expense Id'/>
+          </div>
         <div className="text-center">
-        <button className="btn btn-secondary mb-3" onClick={() => setExpenseToEdit( allExpenses.find((expense) => expense.id === editId.current.value))}>Submit Id</button>
-        <p className="text-center">this is the id you have chosen: {expenseToEdit && expenseToEdit.length > 1 ? <p>No expense with such Id found</p> : editId.current.value}</p>
+          <button className="btn btn-secondary mb-3" onClick={() => setExpenseToEdit( allExpenses.find((expense) => expense.id === editId.current.value))}>Submit Id</button>
+          <p className="text-center">
+            this is the id you have chosen: {editId.current.value === undefined || editId.current.value === null || !expenseToEdit  ? <p>No expense with such Id found</p> : editId.current.value}
+          </p>
 
-        {expenseToEdit && expenseToEdit.length > 1 ? (<p>this is the expense you have chosen:  <br/> {JSON.stringify(expenseToEdit)}</p>) : <br/>}
+          {expenseToEdit && expenseToEdit.length > 1 ? (<p>this is the expense you have chosen:  <br/> {JSON.stringify(expenseToEdit)}</p>) : <br/>}
         </div>
 
         <p>To change the amount, input the correct amount</p>
