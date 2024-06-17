@@ -14,8 +14,9 @@ const ExpenseForm = () => {
   });
 
   const editId = useRef('');
+  const newAmount = useRef('');
 
-  const [valueToChange, setValueToChange] = useState('');
+
   const [deleteId, setdeleteId] = useState(0);
   const [expenseToEdit, setExpenseToEdit] = useState({});
   
@@ -60,7 +61,7 @@ const handleSubmit = (event) => {
 
   
   const handleAmount = () => {
-    setExpenseToEdit((expenseToEdit) => ({...expenseToEdit,amount:valueToChange}));
+    setExpenseToEdit((expenseToEdit) => ({...expenseToEdit,amount:newAmount}));
     dispatch(editExpense(editId, expenseToEdit)); 
   }
 
@@ -143,17 +144,19 @@ const handleSubmit = (event) => {
         <div className="text-center">
           <button className="btn btn-secondary mb-3" onClick={() => setExpenseToEdit( allExpenses.find((expense) => expense.id === editId.current.value))}>Submit Id</button>
           <p className="text-center">
-            this is the id you have chosen: {editId.current.value === undefined || editId.current.value === null || !expenseToEdit  ? <p>No expense with such Id found</p> : editId.current.value}
+            this is the id you have chosen: {editId.current.value === undefined || editId.current.value === null || !expenseToEdit  ? "No expense with such Id found" : editId.current.value}
           </p>
 
           <p>This is the expense you have chosen: {expenseToEdit ? JSON.stringify(expenseToEdit) : "None"}
           </p>
         </div>
 
-        <p>To change the amount, input the correct amount</p>
+        <p>Change the amount by inputting the correct amount below:</p>
         <div className="mb-3">
-        <input value={Number(valueToChange)} className=" form-control " type="number" id="expenseTitle" required onChange={(event) => setValueToChange(Number(event.target.value))} placeholder='Amout'/>
+        <input ref={newAmount} className="form-control" type="number" id="newAmount" required onChange={(event) => newAmount.current.value} placeholder="New Amount"/>
         </div>
+
+        <p>new Amount inputted is : {newAmount.current.value}</p>
         <div className="text-center">
         <button className="btn btn-primary mb-3" onClick={() => handleAmount()}>Submit Edit</button>
         </div>
