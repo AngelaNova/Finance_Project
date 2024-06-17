@@ -146,7 +146,8 @@ const handleSubmit = (event) => {
             this is the id you have chosen: {editId.current.value === undefined || editId.current.value === null || !expenseToEdit  ? <p>No expense with such Id found</p> : editId.current.value}
           </p>
 
-          {expenseToEdit && expenseToEdit.length > 1 ? (<p>this is the expense you have chosen:  <br/> {JSON.stringify(expenseToEdit)}</p>) : <br/>}
+          <p>This is the expense you have chosen: {expenseToEdit ? JSON.stringify(expenseToEdit) : "None"}
+          </p>
         </div>
 
         <p>To change the amount, input the correct amount</p>
