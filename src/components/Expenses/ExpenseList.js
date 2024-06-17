@@ -4,17 +4,16 @@ function ExpenseList({expenses}) {
 
 
   return (
-    <div class="row justify-content-center mt-4 m-2">
+    <div className="row justify-content-center mt-4 m-2">
       <h4 className="text-center">Expenses</h4>
-      <div className="col-12 mx-auto">
-        <div className="mt-2">
+      <div className="col-12 mr-6 ml-6">
+
           {expenses && expenses.map((expense) => (
-            <p className="d-flex justify-content-center align-items-center" key={expense.id}> 
-               {expense.description} : {expense.amount} $
+            <p className="d-flex justify-content-between align-items-center" key={expense.id}> 
+              <span className="flex-end">{expense.description} : {expense.amount} $ </span>
               <span className="flex-end">{expense.date} | <i>{expense.category}</i></span>
             </p>
           ))}
-        </div>
       </div>
     </div>
   );
