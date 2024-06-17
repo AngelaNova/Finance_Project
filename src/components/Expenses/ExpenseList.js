@@ -9,7 +9,7 @@ function ExpenseList({expenses}) {
       <div className="col-12 mx-auto">
         <ul className="list-unstyled text-center">
           {expenses && expenses.map((expense) => (
-            <li key={expense.id}> {expense.description} : {expense.amount} $ | {expense.date} ({expense.category})</li>
+            <li key={expense.id}> {expense.description} : {expense.amount} $ | {expense.date} {expense.category}</li>
           ))}
         </ul>
       </div>
