@@ -64,7 +64,6 @@ const handleSubmit = (event) => {
   
   const handleAmount = () => {
     setExpenseToEdit((expenseToEdit) => ({...expenseToEdit,amount:newAmount.current.value}));
-    console.log("expenseToEdit in handleAmount: ",expenseToEdit);
     dispatch(editExpense(editId.current.value, expenseToEdit)); 
   }
 
