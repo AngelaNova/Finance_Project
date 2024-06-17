@@ -151,12 +151,12 @@ const handleSubmit = (event) => {
           </p>
         </div>
 
-        <p>Change the amount by inputting the correct amount below:</p>
+        <p>Change the amount of the expense. Input the correct amount below:</p>
         <div className="mb-3">
-        <input ref={newAmount} className="form-control" type="number" id="newAmount" required onChange={(event) => newAmount.current.value} placeholder="New Amount"/>
+        <input ref={newAmount} className="form-control" type="number" id="newAmount" required placeholder="New Amount"/>
         </div>
 
-        <p>new Amount inputted is : {newAmount.current.value}</p>
+        <p>New Amount inputted is : {newAmount.current.value}</p>
         <div className="text-center">
         <button className="btn btn-primary mb-3" onClick={() => handleAmount()}>Submit Edit</button>
         </div>
@@ -165,7 +165,7 @@ const handleSubmit = (event) => {
         <button onClick={() => handleEditExpense(editId, expenseToEdit)}>Submit Edit</button>
       */}
 
-      <p className="text-center">To delete an expense, input the id of the expense to delete it</p>
+      <p className="text-center">Delete an expense. Input the id of the expense to delete it</p>
       <p className="text-center">Delete expense with id: {deleteId}</p>
       <div className=" mb-3">
       <input  className="form-control"value={Number(deleteId)} required onChange={(event) => setdeleteId(Number(event.target.value))} type="number"/>
