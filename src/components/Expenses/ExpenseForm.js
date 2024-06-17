@@ -14,7 +14,9 @@ const ExpenseForm = () => {
   });
 
   const editId = useRef('');
+  const editIdForDescription = useRef('');
   const newAmount = useRef('');
+  const newDescription= useRef('');
 
 
   const [deleteId, setdeleteId] = useState(0);
@@ -61,10 +63,15 @@ const handleSubmit = (event) => {
 
   
   const handleAmount = () => {
-    setExpenseToEdit((expenseToEdit) => ({...expenseToEdit,amount:newAmount}));
-    dispatch(editExpense(editId, expenseToEdit)); 
+    setExpenseToEdit((expenseToEdit) => ({...expenseToEdit,amount:newAmount.current.value}));
+    console.log("expenseToEdit in handleAmount: ",expenseToEdit);
+    dispatch(editExpense(editId.current.value, expenseToEdit)); 
   }
 
+  const handleDescription = () => {
+    setExpenseToEdit((expenseToEdit) => ({...expenseToEdit,description:newDescription.current.value}));
+    dispatch(editExpense(editIdForDescription.current.value, expenseToEdit)); 
+  }
 
 
   return (
