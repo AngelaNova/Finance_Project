@@ -63,11 +63,8 @@ const handleSubmit = (event) => {
 
   
   const handleAmount = () => {
-    setExpenseToEdit((expenseToEdit) => {
-      const newExpenseToEdit = ({...expenseToEdit,amount:Number(newAmount.current.value)})
+    setExpenseToEdit((expenseToEdit) => ({...expenseToEdit,amount:Number(newAmount.current.value)}));
       dispatch(editExpense(editId.current.value, expenseToEdit));
-      return newExpenseToEdit;
-  });
      
   }
 
@@ -170,7 +167,7 @@ const handleSubmit = (event) => {
         <div className="text-center">
         <button className="btn btn-primary mb-3" onClick={handleAmount}>Submit Edit</button>
         </div>
-        
+
         {/*<p>To change the description, input the correct description</p>
         <input value={0} type="text" id="expenseTitle" required onChange={(event) => setValueToChange(() => event.target.value)} placeholder='Description'/>
         <button onClick={() => handleEditExpense(editId, expenseToEdit)}>Submit Edit</button>
