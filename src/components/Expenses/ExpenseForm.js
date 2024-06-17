@@ -1,7 +1,8 @@
 import React,{ useState, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { createExpense, editExpense, deleteExpense} from '../../redux/actions/expensesActions';
+import { createExpense, editExpense, deleteExpense } from '../../redux/actions/expensesActions';
 import ExpenseFeed from './ExpenseFeed';
+import DeleteModal from '../DeleteModal';
 
 
 const ExpenseForm = () => {
@@ -17,9 +18,9 @@ const ExpenseForm = () => {
   const newAmount = useRef('');
   const newDescription= useRef('');
   const deleteId = useRef('');
-
-
+  
   const [expenseToEdit, setExpenseToEdit] = useState({});
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
   
   
   const dispatch = useDispatch();
@@ -81,6 +82,22 @@ const handleSubmit = (event) => {
       description: newDescription.current.value,
     }));
   }
+
+  //Show and hide Delete Modal
+
+  const handleDeleteClick = () => {
+    setShowDeleteModal(true);
+  };
+
+  const handleDeleteConfirm = () => {
+    dispatch(deleteExpense(deleteId));
+    setShowDeleteModal(false);
+  };
+
+  const handleDeleteCancel = () => {
+    setShowDeleteModal(false);
+  };
+
 
 
 
@@ -190,14 +207,24 @@ const handleSubmit = (event) => {
 
 
       <p className="text-center">Delete an expense. Input the id of the expense to delete it</p>
-      <p className="text-center">Delete expense with id: {deleteId.current.value}</p>
       <div className=" mb-3">
-        <input  className="form-control" ref={deleteId} required type="number"/>
+        <input  className="form-control" ref={deleteId} required type="text"/>
+        <p className="text-center">Delete expense with id: {deleteId.current.value}</p>
       </div>
       <div className="text-center">
-        <button className="btn btn-danger" onClick={() => alert("Are you sure that you want to delete expense with id of  ", deleteId," ?") (dispatch(deleteExpense(deleteId.current.value)))}>Delete</button>
+        <button className="btn btn-danger" onClick={handleDeleteClick} >Delete</button>
       </div>
-      
+
+      {showDeleteModal && (
+            <DeleteModal
+              deleteId={deleteId}
+              onConfirm={handleDeleteConfirm}
+              onCancel={handleDeleteCancel}
+            />
+      )}  
+
+
+
       <h4 className="text-center mt-4">Filter Here</h4>
 
       <form className="text-center">
