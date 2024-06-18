@@ -212,7 +212,8 @@ const handleSubmit = (event) => {
         <p className="text-center">Delete expense with id: {deleteId.current.value}</p>
       </div>
       <div className="text-center">
-        <button className="btn btn-danger" onClick={handleDeleteClick} >Delete</button>
+        {//make sure to update handleDeleteClick - it doesn't work as intended TODO
+        }<button className="btn btn-danger" onClick={handleDeleteClick} >Delete</button>
       </div>
 
       {showDeleteModal && (
