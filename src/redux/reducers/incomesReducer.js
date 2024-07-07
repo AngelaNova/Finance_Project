@@ -9,14 +9,14 @@ const initialState = {
   allExpenses: [
     {
       id: "a376eb46-c302-47e5-9b90-12g0r7gecf79",
-      amount: 5,
+      amount: 1000,
       date: "2024-05-27",
       category: "Other",
       description: "salary",
     },
     {
       id: "c2794c5f-f85d-441c-af76-9ko310953d9b",
-      amount: 4,
+      amount: 650,
       date: "2024-05-29",
       category: "Housing",
       description: "Rent from tenant",
