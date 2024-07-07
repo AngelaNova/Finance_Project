@@ -25,6 +25,7 @@ const ExpenseForm = () => {
 
   const [expenseToEdit, setExpenseToEdit] = useState({});
   const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState("");
 
   const dispatch = useDispatch();
 
@@ -105,6 +106,14 @@ const ExpenseForm = () => {
   const handleDeleteCancel = () => {
     setShowDeleteModal(false);
   };
+
+  const handleCategoryChange = (event) => {
+    setSelectedCategory(event.target.value);
+  };
+
+  const filteredExpenses = selectedCategory
+    ? allExpenses.filter((expense) => expense.category === selectedCategory)
+    : allExpenses;
 
   return (
     <>
@@ -313,12 +322,13 @@ const ExpenseForm = () => {
               />
             )}
 
+            <br />
             <h4 className="text-center mt-4">Filter Here</h4>
 
             <form className="text-center">
               <select
                 className="form-select"
-                onChange={(event) => true}
+                onChange={handleCategoryChange}
                 name="Category"
                 id="category"
               >
@@ -331,10 +341,30 @@ const ExpenseForm = () => {
                 ))}
               </select>
             </form>
-
-            {/*<ExpenseList expenses={filteredExpenses.length > 0 ? filteredExpenses : allExpenses}/>*/}
-
             <br />
+
+            <div className="row justify-content-center mt-4 m-2">
+              <h4 className="text-center">Filtered Expenses</h4>
+              <div className="col-12 mr-6 ml-6">
+                {filteredExpenses.length > 0 ? (
+                  filteredExpenses.map((expense) => (
+                    <p
+                      className="d-flex justify-content-between align-items-center"
+                      key={expense.id}
+                    >
+                      <span className="flex-end">
+                        {expense.description} : ${expense.amount}
+                      </span>
+                      <span className="flex-end">
+                        {expense.date} | <i>{expense.category}</i>
+                      </span>
+                    </p>
+                  ))
+                ) : (
+                  <p>No expenses found for the selected category.</p>
+                )}
+              </div>
+            </div>
           </div>
         </div>
       </div>
