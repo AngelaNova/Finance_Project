@@ -14,8 +14,8 @@ const FinancialSummary = () => {
   const monthylIncomesInput = useRef(null);
   const yearlyIncomesInput = useRef(null);
 
-  const allExpenses = useSelector((state) => state.expenses.allExpenses);
-  const allIncomes = useSelector((state) => state.incomes.allIncomes);
+  const allExpenses = useSelector((state) => state.expenses.allExpenses) || [];
+  const allIncomes = useSelector((state) => state.incomes.allIncomes) || [];
 
   const totalExpanses = allExpenses.reduce((totalAmounts, expense) => {
     return totalAmounts + expense.amount;
