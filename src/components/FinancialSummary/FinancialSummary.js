@@ -24,7 +24,12 @@ const FinancialSummary = () => {
     return totalAmounts + income.amount;
   }, 0);
 
-  const currentBalance = totalIncomes - totalExpenses;
+  console.log(
+    "total expenses and total incomes : ",
+    totalExpenses,
+    totalIncomes
+  );
+  const currentBalance = totalIncomes - totalExpenses || 0;
 
   const calculateMontlyExpense = (month) => {
     let filterExpenses = allExpenses.filter((expense) => {
