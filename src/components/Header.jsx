@@ -1,11 +1,16 @@
 import { Link } from "react-router-dom";
-import 'bootstrap/dist/css/bootstrap.min.css'; // Ensure you have Bootstrap CSS imported
+import "bootstrap/dist/css/bootstrap.min.css"; // Ensure you have Bootstrap CSS imported
 
 const Header = () => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light" id="Header">
+    <nav
+      className="navbar navbar-expand-lg navbar-light bg-light p-3"
+      id="Header"
+    >
       <div className="container-fluid">
-        <Link className="navbar-brand" to="/">Finance App</Link>
+        <Link className="navbar-brand" to="/">
+          Finance App
+        </Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -20,13 +25,19 @@ const Header = () => {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
             <li className="nav-item">
-              <Link className="nav-link" to="/expense-management">Expense Management</Link>
+              <Link className="nav-link" to="/expense-management">
+                Expense Management
+              </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/income-management">Income Management</Link>
+              <Link className="nav-link" to="/income-management">
+                Income Management
+              </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/financial-summary">Financial Summary</Link>
+              <Link className="nav-link" to="/financial-summary">
+                Financial Summary
+              </Link>
             </li>
           </ul>
         </div>
