@@ -17,14 +17,14 @@ const FinancialSummary = () => {
   const allExpenses = useSelector((state) => state.expenses.allExpenses) || [];
   const allIncomes = useSelector((state) => state.incomes.allIncomes) || [];
 
-  const totalExpanses = allExpenses.reduce((totalAmounts, expense) => {
+  const totalExpenses = allExpenses.reduce((totalAmounts, expense) => {
     return totalAmounts + expense.amount;
   }, 0);
   const totalIncomes = allIncomes.reduce((totalAmounts, income) => {
     return totalAmounts + income.amount;
   }, 0);
 
-  const currentBalance = totalIncomes - totalExpanses;
+  const currentBalance = totalIncomes - totalExpenses;
 
   const calculateMontlyExpense = (month) => {
     let filterExpenses = allExpenses.filter((expense) => {
@@ -75,52 +75,124 @@ const FinancialSummary = () => {
   };
 
   return (
-    <div id="FinancialSummary">
+    <>
       <Header />
-      <h2>See Monthly or Yearly Expenses</h2>
-      <input ref={monthylExpensesInput} type="text" required />
-      <button
-        onClick={() =>
-          calculateMontlyExpense(monthylExpensesInput.current.value)
-        }
-      >
-        Get total Monthly Expenses
-      </button>
+      <div id="FinancialSummary" className="container my-5">
+        <header className="text-center">
+          <h3>Financial Summary</h3>
+        </header>
+        <div className="row justify-content-center">
+          <div className="col-12 col-md-8 col-lg-6">
+            <h4 className="text-center">See Monthly or Yearly Expenses</h4>
+            <form>
+              <div className="mb-3">
+                <label htmlFor="monthly-expenses" className="form-label">
+                  Monthly Expenses (Month):
+                </label>
+                <input
+                  ref={monthylExpensesInput}
+                  type="text"
+                  id="monthly-expenses"
+                  className="form-control"
+                  required
+                />
+                <button
+                  type="button"
+                  className="btn btn-primary mt-2"
+                  onClick={() =>
+                    calculateMontlyExpense(monthylExpensesInput.current.value)
+                  }
+                >
+                  Get Total Monthly Expenses
+                </button>
+                <p>{totalForMonthExp}</p>
+              </div>
+              <div className="mb-3">
+                <label htmlFor="yearly-expenses" className="form-label">
+                  Yearly Expenses (Year):
+                </label>
+                <input
+                  ref={yearlyExpensesInput}
+                  type="text"
+                  id="yearly-expenses"
+                  className="form-control"
+                  required
+                />
+                <button
+                  type="button"
+                  className="btn btn-primary mt-2"
+                  onClick={() =>
+                    calculateYearlyExpense(yearlyExpensesInput.current.value)
+                  }
+                >
+                  Get Total Yearly Expenses
+                </button>
+                <p>{totalForYearExp}</p>
+              </div>
+            </form>
+          </div>
+        </div>
 
-      <p>{totalForMonthExp}</p>
+        <div className="row justify-content-center mt-4">
+          <div className="col-12 col-md-8 col-lg-6">
+            <h4 className="text-center">See Monthly or Yearly Incomes</h4>
+            <form>
+              <div className="mb-3">
+                <label htmlFor="monthly-incomes" className="form-label">
+                  Monthly Incomes (Month):
+                </label>
+                <input
+                  ref={monthylIncomesInput}
+                  type="text"
+                  id="monthly-incomes"
+                  className="form-control"
+                  required
+                />
+                <button
+                  type="button"
+                  className="btn btn-primary mt-2"
+                  onClick={() =>
+                    calculateMontlyIncome(monthylIncomesInput.current.value)
+                  }
+                >
+                  Get Total Monthly Incomes
+                </button>
+                <p>{totalForMonthInc}</p>
+              </div>
+              <div className="mb-3">
+                <label htmlFor="yearly-incomes" className="form-label">
+                  Yearly Incomes (Year):
+                </label>
+                <input
+                  ref={yearlyIncomesInput}
+                  type="text"
+                  id="yearly-incomes"
+                  className="form-control"
+                  required
+                />
+                <button
+                  type="button"
+                  className="btn btn-primary mt-2"
+                  onClick={() =>
+                    calculateYearlyIncome(yearlyIncomesInput.current.value)
+                  }
+                >
+                  Get Total Yearly Incomes
+                </button>
+                <p>{totalForYearInc}</p>
+              </div>
+            </form>
+          </div>
+        </div>
 
-      <input ref={yearlyExpensesInput} type="text" required />
-      <button
-        onClick={() =>
-          calculateYearlyExpense(yearlyExpensesInput.current.value)
-        }
-      >
-        Get total Yearly Expenses
-      </button>
-
-      <p>{totalForYearExp}</p>
-
-      <h2>See Monthly or Yearly Incomes</h2>
-      <input ref={monthylIncomesInput} type="text" required />
-      <button
-        onClick={() => calculateMontlyIncome(monthylIncomesInput.current.value)}
-      >
-        Get total Incomes
-      </button>
-
-      <p>{totalForMonthInc}</p>
-
-      <input ref={yearlyIncomesInput} type="text" required />
-      <button
-        onClick={() => calculateYearlyIncome(yearlyIncomesInput.current.value)}
-      >
-        Get total Yearly Incomes
-      </button>
-
-      <p>{totalForYearInc}</p>
-
-      <p>Current Balance: {currentBalance}</p>
-    </div>
+        <div className="row justify-content-center mt-4">
+          <div className="col-12 col-md-8 col-lg-6 text-center">
+            <h4>Current Balance</h4>
+            <p>{currentBalance}</p>
+          </div>
+        </div>
+      </div>
+    </>
   );
 };
 
