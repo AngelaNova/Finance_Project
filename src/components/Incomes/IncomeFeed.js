@@ -1,14 +1,16 @@
-import React from 'react';
-import IncomeList from './IncomeList';
+import React from "react";
+import IncomeList from "./IncomeList";
 
-const IncomeFeed = ({incomes}) => {
+const IncomeFeed = ({ incomes }) => {
   return (
     <div>
-      <div class="card">
-          <div class="card-text">  <IncomeList incomes={incomes}/> </div>
+      <div className="card">
+        <div className="card-text">
+          <IncomeList incomes={incomes} />
+        </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default IncomeFeed;
