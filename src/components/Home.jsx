@@ -4,8 +4,8 @@ import Header from "./Header";
 const Home = () => {
   return (
     <>
+      <Header />
       <div className="container mt-4">
-        <Header />
         <main>
           <section className="text-center mt-5">
             <h2>Welcome to Financial App</h2>
