@@ -6,21 +6,34 @@ import {
 import { v4 as uuidv4 } from "uuid";
 
 const initialState = {
-  allIncomes: [
+  allExpenses: [
     {
-      id: 0,
+      id: "a376eb46-c302-47e5-9b90-12g0r7gecf79",
       amount: 5,
       date: "2024-05-27",
-      category: "food",
-      description: "coffee",
+      category: "Other",
+      description: "salary",
     },
     {
-      id: 1,
+      id: "c2794c5f-f85d-441c-af76-9ko310953d9b",
       amount: 4,
       date: "2024-05-29",
-      category: "food",
-      description: "donut",
+      category: "Housing",
+      description: "Rent from tenant",
     },
+  ],
+  categories: [
+    "Housing",
+    "Food",
+    "Transportation",
+    "Health",
+    "Debt",
+    "Savings",
+    "Personal Care",
+    "Entertainment",
+    "Education",
+    "Charity",
+    "Other",
   ],
 };
 
