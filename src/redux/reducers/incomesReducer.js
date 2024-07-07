@@ -6,7 +6,7 @@ import {
 import { v4 as uuidv4 } from "uuid";
 
 const initialState = {
-  allExpenses: [
+  allIncomes: [
     {
       id: "a376eb46-c302-47e5-9b90-12g0r7gecf79",
       amount: 1000,
