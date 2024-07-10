@@ -196,6 +196,8 @@ const FinancialSummary = () => {
             <p>{currentBalance}</p>
           </div>
         </div>
+
+        <piChart totalExpenses={totalExpenses} totalIncomes={totalIncomes} />
       </div>
     </>
   );
